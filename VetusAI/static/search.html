@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vetus AI Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <!-- App Shell -->
+  <header class="app-header">
+    <a href="/" class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Vetus<span class="muted"> Search</span></span>
+    </a>
+  </header>
+
+  <main id="app" class="app">
+    <!-- HOME -->
+    <section id="view-home" class="view active">
+      <div class="home-wrap">
+        <h1 class="hero-title">What would you like to know?</h1>
+        <form id="home-form" class="searchbar" autocomplete="off" action="#" novalidate>
+          <input id="home-query" class="search-input" type="search" placeholder="Type your question…" autofocus />
+          <button class="search-btn" type="submit" aria-label="Search">Search</button>
+        </form>
+        <p class="hint">Try: “one cylinder generator”</p>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="view-results" class="view">
+      <div class="results-top">
+        <form id="results-form" class="searchbar compact" autocomplete="off" action="#" novalidate>
+          <input id="results-query" class="search-input" type="search" />
+          <button class="search-btn" type="submit" aria-label="Search">Search</button>
+        </form>
+      </div>
+      <div id="results-summary" class="results-summary" role="status" aria-live="polite"></div>
+      <ol id="results-list" class="results"></ol>
+    </section>
+
+    <!-- THREAD -->
+    <section id="view-thread" class="view">
+      <article class="thread">
+        <h1 id="thread-title" class="thread-title"></h1>
+        <p id="thread-topic" class="thread-topic"></p>
+        <p id="thread-detail1" class="thread-detail1"></p>
+        <p id="thread-detail2" class="thread-detail2"></p>
+        <div id="email-actions" class="email-actions">
+          <button id="expand-all" class="pill-btn">Expand all</button>
+          <button id="collapse-all" class="pill-btn">Collapse all</button>
+        </div>
+        <ul id="emails-list" class="emails"></ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Vetus AI Assistant</span>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="/static/search.js"></script>
+</body>
+</html>

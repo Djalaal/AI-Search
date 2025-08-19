@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vetus AI – Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Shared app styles FIRST -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+  <!-- Chat-specific styles (no background overrides) -->
+  <link rel="stylesheet" href="/static/chat.css" />
+</head>
+<body>
+  <!-- Same header as Search -->
+  <header class="app-header">
+    <a href="/" class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Vetus<span class="muted"> Chat</span></span>
+    </a>
+  </header>
+
+  <!-- Same container width/margins as Search -->
+  <main class="app chat-app">
+    <section class="chat-wrap">
+      <div id="chat-messages" class="chat-messages" aria-live="polite"></div>
+      <form id="chat-form" class="chat-inputbar" action="#" novalidate autocomplete="off">
+        <input id="chat-input" class="chat-input" type="text" placeholder="Type your question..." autocomplete="off" data-bitwarden-watching="false" autofocus />
+        <button id="chat-send" class="search-btn" type="submit" aria-label="Send">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Vetus AI Assistant</span>
+  </footer>
+
+  <script defer src="/static/chat.js"></script>
+</body>
+</html>

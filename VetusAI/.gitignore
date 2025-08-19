@@ -1,0 +1,9 @@
+.venv
+.history
+__pycache__
+backup
+documents
+models
+old code
+processed
+vectorstore

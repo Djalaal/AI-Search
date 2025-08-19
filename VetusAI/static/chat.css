@@ -1,0 +1,114 @@
+/* --- Chat layout --- */
+.chat-app { width:min(920px, 92vw); margin:4vh auto 6vh; }
+.chat-wrap {
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  box-shadow: var(--shadow);
+  min-height: 60vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-messages{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow:auto;
+  padding:8px 4px 16px;
+  min-height: 0;
+  max-height:none;
+}
+
+.msg{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.msg .avatar{
+  width:28px; height:28px; border-radius:50%;
+  background: var(--pill);
+  border:1px solid var(--border);
+  flex:0 0 28px;
+}
+.msg.user .avatar{ background:#505000; }
+.msg.assistant .avatar{ background:#000050; }
+
+.bubble{
+  background:#000015;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 14px;
+  max-width: 80%;
+  line-height:1.45;
+  color:#dfe6f5;
+}
+.msg.user .bubble{ background:#000015; }
+.msg.assistant .bubble{ background:#000015; }
+
+.meta-line{
+  color: var(--muted);
+  font-size:.9rem;
+  margin: 0 0 6px;
+}
+.sources{
+  margin-top:10px;
+  border-top:1px solid var(--border);
+  padding-top:10px;
+}
+.sources h4{
+  margin:0 0 8px;
+  color:#cfe8ff;
+  font-size:1rem;
+}
+.sources .source-list{
+  list-style:none; margin:0; padding:0; display:grid; gap:6px;
+}
+.sources .source-item a{
+  color:#b5bfd1; text-decoration:none;
+}
+.sources .source-item a:hover{ text-decoration:underline; }
+
+.chat-inputbar{
+  margin-top:auto;
+  position: sticky;
+  bottom: 0;
+  z-index:10;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:stretch;
+  background:var(--card);
+  padding:10px;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+.chat-input{
+  flex:1; min-width:0;
+  background:#0f1217; color:var(--text);
+  border:1px solid #1d2129; border-radius:12px;
+  padding:14px 16px; font-size:1rem; outline:none;
+}
+.chat-input:focus{ border-color:#2a2f3a; box-shadow:0 0 0 3px rgba(255,255,255,.04) }
+
+.hint{ color:var(--muted); margin-top:10px; }
+
+/* muted text utility (reuses your style idea) */
+.muted-text{ color: var(--muted); }
+
+/* Typing dots */
+.typing{
+  display:inline-block;
+  min-width: 32px;
+}
+.typing::after{
+  content: "…";
+  animation: pulse 1s infinite steps(1, end);
+}
+@keyframes pulse {
+  0% { content: " "; }
+  33% { content: "."; }
+  66% { content: ".."; }
+  100% { content: "..."; }
+}

@@ -1,0 +1,182 @@
+:root{
+  --bg:#0b0b0b;
+  --card:radial-gradient(circle at 50% 50%, #101020, #0b0b0b);
+  --muted:#9090b0;
+  --text:#eeeeee;
+  --accent:#0000aa;
+  --pill:#000000;
+  --border:#333333;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  background:radial-gradient(circle at 50% 50%, #101010, #000000);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+/* Firefox */
+html {
+  color-scheme: dark;
+  scrollbar-width: thin;
+  /* thumb color, track color */
+  scrollbar-color: rgba(255,255,255,0.4) transparent;
+}
+/* Chromium/WebKit */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);  /* grey/white translucent */
+  border-radius: 999px;
+  border: 2px solid transparent;    /* pill look */
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.6);  /* a bit brighter on hover */
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Header / Footer */
+.app-header,.app-footer{
+  display:flex; align-items:center; justify-content:center;
+  padding:14px 20px; border-bottom:1px solid var(--border);
+  background:rgba(10,12,15,.6); backdrop-filter:blur(8px);
+  position:sticky; top:0; z-index:10;
+}
+.app-footer{ border-top:1px solid var(--border); border-bottom:none; position:static; opacity:.8; font-size:.9rem }
+
+.brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--text) }
+.brand-dot{ width:12px; height:12px; background:var(--accent); border-radius:50%; box-shadow:0 0 18px rgba(16,163,127,.8) }
+.brand-text{ font-weight:600; letter-spacing:.3px }
+.muted{ color:var(--muted); font-weight:500 }
+
+/* Layout */
+.app{ width:min(960px, 92vw); margin:4vh auto 6vh; }
+.view{ display:none }
+.view.active{ display:block }
+
+/* Landing */
+.home-wrap{ margin-top:12vh; text-align:center; }
+.hero-title{
+  font-size:clamp(1.6rem, 2.8vw + 1rem, 2.8rem);
+  font-weight:600; letter-spacing:.2px; margin:0 0 24px;
+}
+.hint{ color:var(--muted); margin-top:14px; }
+
+/* Search bar */
+.searchbar{
+  display:flex; gap:10px; align-items:center; justify-content:center;
+  background:var(--card); padding:10px; border-radius:14px;
+  box-shadow:var(--shadow); border:1px solid var(--border);
+}
+.searchbar.compact{ justify-content:stretch; }
+.search-input{
+  flex:1; min-width:0;
+  background:#0f1217; color:var(--text);
+  border:1px solid #1d2129; border-radius:12px;
+  padding:14px 16px; font-size:1rem; outline:none;
+}
+.search-input:focus{ border-color:#2a2f3a; box-shadow:0 0 0 3px rgba(255,255,255,.04) }
+.search-btn{
+  padding:12px 16px; border:0; border-radius:12px; cursor:pointer;
+  background:var(--accent); color:white; font-weight:600;
+  transition:transform .04s ease, filter .2s ease;
+}
+.search-btn:active{ transform:translateY(1px) }
+
+/* Results */
+.results-top{ position:sticky; top:70px; margin-bottom:18px; z-index:5 }
+.results-summary{ margin:10px 2px 14px; color:var(--muted) }
+.results{
+  list-style:none; margin:0; padding:0; display:grid; gap:14px;
+}
+.result{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:14px; padding:16px 18px; box-shadow:var(--shadow);
+}
+.result-title{
+  color:#cfe8ff; font-size:1.25rem; font-weight:600; text-decoration:none;
+}
+.result-title:hover{text-decoration:underline}
+.result-meta{ margin:6px 0 8px; display:flex; gap:8px; flex-wrap:wrap }
+.pill{
+  background:var(--pill); border:1px solid var(--border); color:var(--muted);
+  padding:3px 8px; border-radius:999px; font-size:.8rem;
+}
+/* make links inside pills use the pill color */
+.pill a,
+.pill a:visited {
+  color: inherit;
+  text-decoration: none; /* keep the clean pill look */
+}
+.pill a:hover { text-decoration: underline; }
+.pill code { color: inherit; } /* if you wrap text in <code> */
+.result-snippet{ margin:0; color:#d6d9e0; line-height:1.5 }
+
+/* Thread */
+.thread-header{ margin:10px 0 14px }
+.back-link{ color:#b5bfd1; text-decoration:none }
+.back-link:hover{ text-decoration:underline }
+.thread{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:18px; box-shadow:var(--shadow);
+}
+.thread-title{ margin:0 0 8px; font-size:1.4rem }
+
+/* NEW: swapped old fields for topic & details */
+.thread-topic{ margin:0 0 16px; color:var(--muted); }
+.thread-detail1{ margin:0 0 16px; color:var(--muted); }
+.thread-detail2{ margin:0 0 16px; color:var(--muted); }
+
+.email-actions{ display:flex; gap:8px; margin-bottom:10px }
+.pill-btn{
+  background:var(--pill); color:var(--text); border:1px solid var(--border);
+  padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:600;
+}
+.emails{ list-style:none; padding:0; margin:0; display:grid; gap:10px }
+.email-card{ background:#0f1217; border:1px solid var(--border); border-radius:12px; padding:8px 12px; }
+.email-card summary{
+  cursor:pointer;
+  font-weight:600;
+  color:#cfdbf2;
+}
+.email-headers{ display:block; padding:10px 2px }
+.email-headers .kv{ display:block; margin:6px 0 }
+.email-headers .k{ display:inline; color:var(--muted); font-weight:600 }
+.email-headers .k::after{ content: ": "; }
+.email-headers .v{ display:inline; color:#dfe6f5; word-break:break-word }
+.email-header-line{ font-weight:600; color:#cfdbf2 }
+.email-meta{ margin-top:4px; display:flex; gap:8px; flex-wrap:wrap }
+.email-body{
+  margin:10px 0 0;
+  max-height:420px;
+  overflow:auto;
+  background:#0b0c10;
+  border:1px solid #151922;
+  border-radius:10px;
+  padding:12px;
+  color:#cdd6e6;
+  line-height:1.45;
+}
+.attachments h4{ margin:12px 0 6px; font-size:1rem }
+.attachments ul{ margin:0; padding-left:18px }
+
+.muted-text {
+  color: var(--muted);
+  display: block;       /* so padding applies to the whole line */
+  padding-left: 0.5em;  /* adjust as needed for your tab width */
+}
+
+.multiline { white-space: pre-line; }
+
+@media (max-width:640px){
+  .email-headers{ /* previously grid in some versions; keep block for safety */ display:block; }
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <a class="brand" href="/search">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Vetus Assistant</span>
+    </a>
+  </header>
+
+  <!-- Main -->
+  <main class="app">
+
+    <!-- Doc meta card -->
+    <section class="thread">
+      <h2 class="thread-title" id="title">Document</h2>
+
+      <div class="result-meta" id="meta-pills"><!-- pills go here --></div>
+    </section>
+
+    <!-- Paragraph card -->
+    <section class="thread" style="margin-top:14px">
+      <h3 class="thread-title" style="font-size:1.1rem; margin-bottom:8px">Matched paragraph</h3>
+      <pre class="email-body" id="para">Loading…</pre>
+    </section>
+
+    <!-- Fallback message card (hidden by default) -->
+    <section class="thread" id="fallback" style="display:none; margin-top:14px">
+      <h3 class="thread-title" style="font-size:1.1rem; margin-bottom:8px">No data</h3>
+      <p class="muted-text" id="fallback-msg">Sorry—no data found for this link. Try running the search again.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span class="muted">© Vetus Assistant</span>
+  </footer>
+
+  <script>
+    (function(){
+        const qs = new URLSearchParams(location.search);
+        const id = qs.get("id");
+        const key = id ? `docview:${id}` : "";
+        let data = null;
+        try { data = key ? JSON.parse(localStorage.getItem(key) || "null") : null; } catch(_){}
+
+        const titleEl   = document.getElementById("title");
+        const pillsEl   = document.getElementById("meta-pills");
+        const paraEl    = document.getElementById("para");
+        const fallback  = document.getElementById("fallback");
+        const fallbackMsg = document.getElementById("fallback-msg");
+
+        if (!data) {
+            titleEl.textContent = "Document";
+            pillsEl.innerHTML = "";
+            paraEl.textContent = "";
+            fallback.style.display = "block";
+            return;
+        }
+
+        // Title
+        document.title = data.doc_name || "Document";
+        titleEl.textContent = data.doc_name || "Document";
+
+        // Pills (Source, Page, Paragraph)
+        const pills = [];
+        if (data.page !== undefined && data.page !== null) {
+            pills.push(`<span class="pill">page: ${String(data.page)}</span>`);
+        }
+        if (data.paragraph_index !== undefined && data.paragraph_index !== null) {
+            pills.push(`<span class="pill">paragraph: ${String(data.paragraph_index)}</span>`);
+        }
+        if (data.source) {
+            const href = `/open-location?path=${encodeURIComponent(data.source)}`;
+            pills.push(`<span class="pill"><a href="${href}" target="_blank" rel="noopener"><code>${data.source}</code></a></span>`);
+        }
+        pillsEl.innerHTML = pills.join(" ");
+
+        // Matched paragraph
+        paraEl.textContent = data.paragraph || "";
+
+        // Cleanup so localStorage doesn’t fill up
+        try { localStorage.removeItem(key); } catch(_){}
+    })();
+  </script>
+</body>
+</html>

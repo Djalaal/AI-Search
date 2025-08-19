@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vetus AI – Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Shared app styles FIRST -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    /* Only component styling; DO NOT touch body/background */
+    .landing-wrap{ margin-top:12vh; text-align:center; }
+    .landing-title{
+      font-size:clamp(1.8rem, 2.8vw + 1rem, 3rem);
+      font-weight:600; letter-spacing:.2px; margin:0 0 24px;
+    }
+    .landing-desc{ color:var(--muted); font-size:1.05rem; margin-bottom:40px; }
+    .landing-links{ display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .landing-card{
+      flex:1 1 260px; max-width:280px;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:16px; padding:24px; text-decoration:none; color:var(--text);
+      box-shadow:var(--shadow);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .landing-card:hover{ transform:translateY(-4px); box-shadow:0 14px 34px rgba(0,0,0,.4); }
+    .landing-card h3{ margin-top:0; font-size:1.3rem; color:#cfe8ff; }
+    .landing-card p{ margin:0; color:var(--muted); line-height:1.4; }
+    .brand{ justify-content:center; }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <a href="/" class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Vetus<span class="muted"> AI</span></span>
+    </a>
+  </header>
+
+  <!-- Same container class as Search -->
+  <main class="app">
+    <section class="landing-wrap">
+      <h1 class="landing-title">Welcome to Vetus AI</h1>
+      <p class="landing-desc">Choose how you want to explore your mailbox and documents:</p>
+
+      <div class="landing-links">
+        <a href="/search" class="landing-card">
+          <h3>🔍 Search</h3>
+          <p>Find specific threads and summaries quickly using embedded semantic search.</p>
+        </a>
+        <a href="/chat" class="landing-card">
+          <h3>💬 Chat</h3>
+          <p>Ask natural questions and get AI-powered answers with clickable sources.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Vetus AI Assistant</span>
+  </footer>
+</body>
+</html>
